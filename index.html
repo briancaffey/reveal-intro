@@ -7,8 +7,8 @@
 		<title>reveal.js</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
-
+		<!-- <link rel="stylesheet" href="css/theme/black.css"> -->
+		<link rel="stylesheet" href="css/theme/solarized.css" id="theme">
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -24,24 +24,78 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section data-markdown data-transition="fade-in slide-out">
+					<textarea data-template>
+# Presentations with Reveal.js
+
+[@briancaffey](https://twitter.com/briancaffey) 
+
+[briancaffey.github.io](https://briancaffey.github.io) 
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in slide-out">
+						<textarea data-template>
+This presentation will show you how to get started with [Reveal.js](https://github.com/hakimel/reveal.js).
+
+Here's what I'll cover: 
+- Intial setup
+- My workflow
+- Hosting presentations online
+- Tips and tricks
+						</textarea>
+				</section>
+
+
+				<section data-markdown data-transition="fade-in slide-out">
+						<textarea data-template>
+### Intial setup
+
+To get started, all you need to do is clone a copy of the reveal.js github repo: 
+
+```
+$ git clone https://github.com/hakimel/reveal.js.git
+$ cd reveal.js
+$ npm install
+$ npm start
+```
+
+This installs the full version of reveal.js. When you run `npm start`, a new window will open `index.html` in your browser and the presentation will be refreshed whenever you save `index.html`
+						</textarea>
+				</section>
+				<section data-markdown data-transition="fade-in slide-out">
+					<textarea data-template>
+						<h1>Math.</h1>
+						<p>
+							$f\left( x \right) = \;\frac{{2{x^2}\;\; - \;\;32}}{{{x^2}\; + \;5x\; + \;4}}$
+						</p>					
+					</textarea>
+				</section>
 			</div>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
+		<style> .reveal i.fa { font-family:FontAwesome; font-style: normal; } </style>
 
 		<script>
 			// More info about config & dependencies:
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				transition: "fade",
+				math: {
+					// mathjax: 'js/MathJax.js',
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
 				]
 			});
 		</script>
